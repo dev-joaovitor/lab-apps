@@ -10,6 +10,7 @@ main {
 }
 
 table {
+    max-width: 450px;
     margin: 0 auto;
     border-collapse: collapse;
 }
