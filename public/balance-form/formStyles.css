@@ -1,0 +1,48 @@
+*, *::before, *::after {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e4e4e4;
+}
+
+form {
+    border: 1px solid;
+    margin: 0 auto;
+    max-width: 300px;
+    padding: 20px 0;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+}
+
+select, input {
+    width: 80%;
+    height: 30px;
+    text-align: center;
+    margin: 3px 0;
+}
+
+p.disclaimer {
+    font-size: 10px;
+    text-align: center;
+}
+
+button#btn-save-data {
+    display: block;
+    padding: 10px;
+    margin: 15px auto 0;
+    border: 2px solid #808080;
+}
+
+.error-msg {
+    color: #ff0000;
+    font-size: 12px;
+}

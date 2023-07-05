@@ -1,0 +1,55 @@
+*, *::before, *::after {
+    font-family: sans-serif;
+    font-weight: 600;
+    box-sizing: border-box;
+}
+
+main {
+    min-width: 300px;
+    width: 100%;
+}
+
+table {
+    max-width: 450px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+table, tr, th, td {
+    border: 2px solid #929292;
+}
+
+th, td {
+    padding: 3px;
+    text-align: center;
+}
+
+td {
+    height: 25px;
+}
+
+th {
+    height: 40px;
+    width: 15vw;
+    padding: 5px;
+    border: 3px solid #535353;
+    background-color: #79cde2;
+}
+
+.current-cell {
+    background-color: #c2f3ff;
+    border: 3px solid;
+}
+
+.column-zero {
+    max-width: 35px;
+}
+
+header {
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+}

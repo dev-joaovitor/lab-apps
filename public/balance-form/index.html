@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="formStyles.css">
+    <script type="module" src="formScript.js" defer></script>
+    <title>Balance Form</title>
+</head>
+<body>
+    <header></header>
+    <main>
+        <form id="balance-form">
+            <p class="disclaimer">Dados obrigatórios</p>
+            <label>
+                Insira seu ID AMBEV:
+                <input min="90000000" max="99999999" type="number" name="userid" id="inp-userid" placeholder="Ex.: 99835902" required>
+                <span class="error-msg" id="error-id"></span>
+            </label>
+            <label>
+                Insira o número do lote:
+                <input type="number" name="batchno" id="inp-batchno" placeholder="Ex.: 10" required>
+                <p class="disclaimer">O lote já deve estar aberto no Athena MES</p>
+                <span class="error-msg" id="error-batch"></span>
+            </label>
+            <label>
+                Insira a densidade da água:
+                <input type="number" name="waterdensity" id="inp-waterdensity" value="0.998" required>
+                <span class="error-msg" id="error-density"></span>
+            </label>
+            <label>
+                <select id="inp-equipment" required>
+                    <option value="" selected disabled>Selecione o equipamento</option>
+                    <option value="1-502">ENCH 1 - 502</option>
+                    <option value="1-503">ENCH 1 - 503</option>
+                    <option value="2-503">ENCH 2 - 503</option>
+                    <option value="1-511">ENCH 1 - 511</option>
+                    <option value="1-512">ENCH 1 - 512</option>
+                    <option value="2-512">ENCH 2 - 512</option>
+                    <option value="1-541">ENCH 1 - 541</option>
+                    <option value="2-541">ENCH 2 - 541</option>
+                </select>
+                <span class="error-msg" id="error-equipment"></span>
+            </label>
+            <label>
+                <select id="inp-volume" required>
+                    <option value="" selected disabled>Selecione o volume</option>
+                    <option value="207">207ml</option>
+                    <option value="237">237ml</option>
+                    <option value="250">250ml</option>
+                    <option value="269">269ml</option>
+                    <option value="275">275ml</option>
+                    <option value="300">300ml</option>
+                    <option value="310">310ml</option>
+                    <option value="313">313ml</option>
+                    <option value="315">315ml</option>
+                    <option value="330">330ml</option>
+                    <option value="343">343ml</option>
+                    <option value="350">350ml</option>
+                    <option value="355">355ml</option>
+                    <option value="385">385ml</option>
+                    <option value="410">410ml</option>
+                    <option value="473">473ml</option>
+                    <option value="500">500ml</option>
+                    <option value="550">550ml</option>
+                    <option value="600">600ml</option>
+                    <option value="630">630ml</option>
+                    <option value="650">650ml</option>
+                    <option value="1000">1L</option>
+                    <option value="1100">1.1L</option>
+                    <option value="1001">1L (Gran BOH e Bud)</option>
+                </select>
+                <span class="error-msg" id="error-volume"></span>
+            </label>
+            <button id="btn-save-data" type="button">Salvar dados</button>
+        </form>
+    </main>
+    <footer></footer>
+</body>
+</html>
