@@ -8,11 +8,14 @@ export async function StoreForm(req: Request, res: Response) {
 }
 
 export async function StoreWeights(req: Request, res: Response) {
+    console.log(req.body);
+
     const repo = myDataSource.getRepository(Weights);
     // const {} = req.body; TODO: status 400..
     
     const weights = repo.create(req.body);
-    const result = await repo.save(weights);
+    const result = await repo.save(weights)
+                            .catch(e => res.status(400).json({ error: "Alguma coisa deu errado =(" }));
     console.log(result);
 
     res.status(200).json({ message: "Valores salvos no banco de dados!" });

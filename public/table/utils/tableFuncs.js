@@ -4,11 +4,12 @@ export let column = 1,
            last = [1,1],
            node = false;
 
-const weights = {
-    1: {},
-    2: {},
-    3: {},
-    4: {},
+export const weights = {
+    batchNo: 666,
+    1: [],
+    2: [],
+    3: [],
+    4: [],
 }
 
 export function addWeight(value) {
@@ -19,7 +20,9 @@ export function addWeight(value) {
     cell.textContent = value;
     cell.classList.remove("current-cell");
     
-    weights[column][row] = value;
+    if (value !== "~") {
+        weights[column].splice(row - 1, 0, value);
+    }
 
     if (row === 20) {
         row = 1;
@@ -48,9 +51,8 @@ export function deleteWeight(selectedNode) {
     if (node) return;
 
     [column, row] = selectedNode.id.split("-");
-    weights[column][row] = "";
 
-    console.log(weights);
+    weights[column].splice(row-1, 1);
 
     document.querySelector(`.current-cell`)?.classList.remove("current-cell");
     node = selectedNode;
