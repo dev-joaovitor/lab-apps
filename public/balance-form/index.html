@@ -11,7 +11,6 @@
     <header></header>
     <main>
         <form id="balance-form">
-            <p class="disclaimer">Dados obrigatórios</p>
             <label>
                 Insira seu ID AMBEV:
                 <input min="90000000" max="99999999" type="number" name="userid" id="inp-userid" placeholder="Ex.: 99835902" required>
@@ -20,16 +19,16 @@
             <label>
                 Insira o número do lote:
                 <input type="number" name="batchno" id="inp-batchno" placeholder="Ex.: 10" required>
-                <p class="disclaimer">O lote já deve estar aberto no Athena MES</p>
                 <span class="error-msg" id="error-batch"></span>
+                <p class="disclaimer">O lote já deve estar aberto no Athena MES</p>
             </label>
             <label>
                 Insira a densidade da água:
-                <input type="number" name="waterdensity" id="inp-waterdensity" value="0.998" required>
+                <input name="waterdensity" id="inp-waterdensity" required>
                 <span class="error-msg" id="error-density"></span>
             </label>
             <label>
-                <select id="inp-equipment" required>
+                <select title="Equipamento" id="inp-equipment" required>
                     <option value="" selected disabled>Selecione o equipamento</option>
                     <option value="ENCH1-502">ENCH 1 - 502</option>
                     <option value="ENCH1-503">ENCH 1 - 503</option>
@@ -43,7 +42,7 @@
                 <span class="error-msg" id="error-equipment"></span>
             </label>
             <label>
-                <select id="inp-volume" required>
+                <select title="Volume Nominal" id="inp-volume" required>
                     <option value="" selected disabled>Selecione o volume</option>
                     <option value="207">207ml</option>
                     <option value="237">237ml</option>

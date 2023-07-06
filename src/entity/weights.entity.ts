@@ -1,5 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn, IntegerType } from "typeorm"
 
+//TODO: CHANGE COLUMN NAMES TO P*..
+
 @Entity()
 export class Weights {
     @PrimaryColumn({ unique: true })

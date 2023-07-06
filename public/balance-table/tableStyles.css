@@ -9,6 +9,10 @@ main {
     width: 100%;
 }
 
+p#table-information {
+    text-align: center;
+}
+
 table {
     max-width: 450px;
     margin: 0 auto;
@@ -16,6 +20,7 @@ table {
 }
 
 table, tr, th, td {
+    font-size: 13pt;
     border: 2px solid #929292;
 }
 
@@ -52,4 +57,10 @@ header {
 button {
     display: block;
     margin: 0 auto;
+}
+
+
+.enum {
+    color: #ffffff;
+    background-color: #4e4e4e;
 }

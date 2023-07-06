@@ -2,6 +2,7 @@
 const inpUserId = document.querySelector("#inp-userid");
 const inpBatchNo = document.querySelector("#inp-batchno");
 const inpWaterDensity = document.querySelector("#inp-waterdensity");
+      inpWaterDensity.value = 0.998;
 const inpEquipment = document.querySelector("#inp-equipment");
 const inpVolume = document.querySelector("#inp-volume");
 
@@ -16,15 +17,30 @@ const balanceForm = document.querySelector("#balance-form");
 
 const btnSaveData = document.querySelector("#btn-save-data");
 
+const formCookie = document.cookie.split("=");
 let form = {};
+
+// read cookies
+if (formCookie[0] === "form") {
+    form = JSON.parse(decodeURIComponent(formCookie[1]));
+    const { userId, batchNo, waterDensity, equipment, nominalVolume } = form;
+
+    [
+     inpUserId.value, inpBatchNo.value, inpWaterDensity.value,
+     inpEquipment.value, inpVolume.value
+    ] = [
+        userId, batchNo, waterDensity,
+        equipment, nominalVolume
+    ]
+}
 
 balanceForm.addEventListener("change", () => {
     form = {
-        userId:       parseInt(inpUserId.value),
-        batchNo:      parseInt(inpBatchNo.value),
-        waterDensity: parseFloat(inpWaterDensity.value),
-        equipment:    inpEquipment.value,
-        nominalVolume:       parseInt(inpVolume.value),
+        userId:        parseInt(inpUserId.value),
+        batchNo:       parseInt(inpBatchNo.value),
+        waterDensity:  parseFloat(inpWaterDensity.value),
+        equipment:     inpEquipment.value,
+        nominalVolume: parseInt(inpVolume.value),
     }
 })
 

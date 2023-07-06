@@ -6,12 +6,13 @@ export let column = 1,
            toEdit = false;
 
 export const weights = {
-    batchNo: 666,
     1: [],
     2: [],
     3: [],
     4: [],
 }
+
+
 
 export function addWeight(value) {
     if (completedColumns.length === 4 && node === false) return;
@@ -39,10 +40,11 @@ export function addWeight(value) {
 
     if (row === 20) {
         row = 1;
-        completedColumns.push(column);
+        if (!completedColumns.includes(column)) {
+            completedColumns.push(column);
+        }
         column++;
         console.log(completedColumns);
-        console.log(weights);
     } else row++;
 
     if ((column === 2 || column === 4) && row >= 7) {
@@ -62,6 +64,8 @@ export function addWeight(value) {
     return node = false;
 }
 
+
+
 export function deleteWeight(selectedNode) {
     if (node) return;
 
@@ -79,6 +83,5 @@ export function deleteWeight(selectedNode) {
     document.querySelector(`.current-cell`)?.classList.remove("current-cell");
     node = selectedNode;
     node.className = "current-cell";
-
     return;
 }

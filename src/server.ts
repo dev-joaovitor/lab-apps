@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import { myDataSource } from "./server-datasource";
 
 import * as BalanceControllers from "./controller/BalanceControllers";
+import * as BalanceMiddlewares from "./middleware/BalanceMiddlewares";
 
 import PageNotFound from "./middleware/four0four";
 
@@ -22,8 +23,15 @@ myDataSource
         console.error("Error during Data Source initialization:", err);
     })
 
+const router = express.Router();
+
 app.use(cookieParser());
 app.use(express.json());
+app.use(router);
+
+
+app.get("/balance-table", BalanceMiddlewares.cookieCheck, express.static("public"));
+
 app.use(express.static("public"));
 
 app.get("/api/get-weights", BalanceControllers.getAllWeights);
