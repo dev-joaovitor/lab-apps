@@ -5,15 +5,15 @@ export class Weights {
     @PrimaryColumn({ unique: true })
     batchNo: number;
 
-    @Column("int", { array: true })
+    @Column("float", { array: true })
     1: number[];
 
-    @Column("int", { array: true })
+    @Column("float", { array: true })
     2: number[];
 
-    @Column("int", { array: true })
+    @Column("float", { array: true })
     3: number[];
 
-    @Column("int", { array: true })
+    @Column("float", { array: true })
     4: number[];
 }

@@ -8,7 +8,7 @@ export class Form {
     @Column()
     userId: number
 
-    @Column()
+    @Column("float")
     waterDensity: number
 
     @Column()
@@ -17,6 +17,6 @@ export class Form {
     @Column()
     nominalVolume: number
 
-    @Column()
+    @Column("float")
     individualTolerance: number
 }

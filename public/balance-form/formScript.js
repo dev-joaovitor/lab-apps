@@ -16,46 +16,42 @@ const balanceForm = document.querySelector("#balance-form");
 
 const btnSaveData = document.querySelector("#btn-save-data");
 
-let userId = "",
-    batchNo = "",
-    waterDensity = "",
-    equipment = "",
-    volume = "",
-    form;
+let form = {};
 
-balanceForm.addEventListener("change", (e) => {
-    userId = inpUserId.value;
-    batchNo = inpBatchNo.value;
-    waterDensity = inpWaterDensity.value;
-    equipment = inpEquipment.value;
-    volume = inpVolume.value;
-
+balanceForm.addEventListener("change", () => {
     form = {
-        userId,
-        batchNo,
-        waterDensity,
-        equipment,
-        volume,
+        userId:       parseInt(inpUserId.value),
+        batchNo:      parseInt(inpBatchNo.value),
+        waterDensity: parseFloat(inpWaterDensity.value),
+        equipment:    inpEquipment.value,
+        nominalVolume:       parseInt(inpVolume.value),
     }
-    // window.location = "/balance-table";
 })
 
-btnSaveData.addEventListener("click", (e) => {
+btnSaveData.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    idError.textContent = ""
-    batchError.textContent = ""
-    densityError.textContent = ""
-    equipError.textContent = ""
+    idError.textContent = "";
+    batchError.textContent = "";
+    densityError.textContent = "";
+    equipError.textContent = "";
     volumeError.textContent = "";
 
-    if (userId.length !== 8) return idError.textContent = "Por favor, verifique o ID inserido";
-    if (batchNo <= 0 || batchNo === "") return batchError.textContent = "Número do lote deve ser maior que zero";
-    if (waterDensity <= 0 || waterDensity === "") return densityError.textContent = "Densidade da água deve ser maior que zero";
-    if (equipment === "") return equipError.textContent = "Um equipamento deve ser selecionado";
-    if (volume === "") return volumeError.textContent = "Um volume deve ser selecionado";
+    const response = await fetch("/api/store-form", {
+        method: "post",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(form)
+    });
 
-    console.log("you're good to go");
-    console.log(form);
+    const res = await response.json();
 
+    console.log(res);
+
+    if (res.error === 1) return idError.textContent = "Verifique o ID inserido";
+    if (res.error === 2) return batchError.textContent = "Verifique o número do lote";
+    if (res.error === 3) return densityError.textContent = "Verifique a densidade inserida";
+    if (res.error === 4) return equipError.textContent = "Um equipamento deve ser selecionado";
+    if (res.error === 5) return volumeError.textContent = "Um volume deve ser selecionado";
+    
+    if (res.message === "success") window.location = "/balance-table";
 })

@@ -1,11 +1,13 @@
 import "reflect-metadata";
 import express from "express";
-import { Request, Response } from "express";
+import cookieParser from "cookie-parser";
+
 import { myDataSource } from "./server-datasource";
-import { Form } from "./entity/form.entity";
-import { Weights } from "./entity/weights.entity";
+
 import * as BalanceControllers from "./controller/BalanceControllers";
+
 import PageNotFound from "./middleware/four0four";
+
 
 const app = express()
 
@@ -20,14 +22,17 @@ myDataSource
         console.error("Error during Data Source initialization:", err);
     })
 
-app.use(express.static("public"));
+app.use(cookieParser());
 app.use(express.json());
+app.use(express.static("public"));
 
 app.get("/api/get-weights", BalanceControllers.getAllWeights);
 
 app.get("/api/get-weights/:batch", BalanceControllers.getWeightsByBatch);
 
 app.post("/api/store-weights", BalanceControllers.StoreWeights);
+
+app.post("/api/store-form", BalanceControllers.StoreForm);
 
 // 404
 app.use(PageNotFound);
