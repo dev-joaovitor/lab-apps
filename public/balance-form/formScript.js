@@ -69,5 +69,5 @@ btnSaveData.addEventListener("click", async (e) => {
     if (res.error === 4) return equipError.textContent = "Um equipamento deve ser selecionado";
     if (res.error === 5) return volumeError.textContent = "Um volume deve ser selecionado";
     
-    if (res.message === "success") window.location = "/balance-table";
+    if (res.message === "success") return window.location = "/balance-table";
 })

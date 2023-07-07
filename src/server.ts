@@ -9,7 +9,6 @@ import * as BalanceMiddlewares from "./middleware/BalanceMiddlewares";
 
 import PageNotFound from "./middleware/four0four";
 
-
 const app = express()
 
 // establish database connection
@@ -23,12 +22,8 @@ myDataSource
         console.error("Error during Data Source initialization:", err);
     })
 
-const router = express.Router();
-
 app.use(cookieParser());
 app.use(express.json());
-app.use(router);
-
 
 app.get("/balance-table", BalanceMiddlewares.cookieCheck, express.static("public"));
 
@@ -41,6 +36,8 @@ app.get("/api/get-weights/:batch", BalanceControllers.getWeightsByBatch);
 app.post("/api/store-weights", BalanceControllers.StoreWeights);
 
 app.post("/api/store-form", BalanceControllers.StoreForm);
+
+app.post("/api/calc-criteria", BalanceControllers.calcCriteria);
 
 // 404
 app.use(PageNotFound);

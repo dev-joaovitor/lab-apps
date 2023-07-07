@@ -9,12 +9,19 @@ main {
     width: 100%;
 }
 
-p#table-information {
-    text-align: center;
+
+table#criteria-table {
+    min-width: min(400px , 50%);
+}
+
+p { text-align: center }
+
+p#weight-table-result span {
+    background-color: blue;
 }
 
 table {
-    max-width: 450px;
+    max-width: 500px;
     margin: 0 auto;
     border-collapse: collapse;
 }
@@ -25,11 +32,11 @@ table, tr, th, td {
 }
 
 th, td {
-    padding: 3px;
     text-align: center;
 }
 
 td {
+    padding: 3px;
     height: 25px;
 }
 
@@ -61,6 +68,9 @@ button {
 
 
 .enum {
-    color: #ffffff;
     background-color: #4e4e4e;
+    color: #ffffff;
 }
+
+.criteria-ok { background-color: #62cb26; color: #ffffff; }
+.criteria-nok { background-color: #eb3636; color: #ffffff; }

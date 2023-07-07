@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only src/server.ts"
+    "dev": "ts-node-dev --transpile-only src/server.ts",
+    "build": "tsc --build"
   },
   "keywords": [],
   "author": "joaotorvitor",
@@ -12,6 +13,7 @@
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
+    "mqtt": "^4.3.7",
     "pg": "^8.11.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17"

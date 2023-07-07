@@ -5,6 +5,10 @@ import { Request, Response } from "express";
 import { myDataSource } from "../server-datasource";
 import { individualTolerances } from "../entity/tolerance.entity";
 import formValidation from "../model/formValidation";
+import weightsValidation from "../model/weightsValidation";
+import mqttPublish from "../mqtt/mqttPublish";
+import weightsFormat from "../utils/weightsFormat";
+import criteriacalc from "../utils/criteriaCalc";
 
 export async function StoreForm(req: Request, res: Response) {
     let formError = false;
@@ -35,24 +39,55 @@ export async function StoreForm(req: Request, res: Response) {
 }
 
 export async function StoreWeights(req: Request, res: Response) {
+    let topic = "/soda/laboratorio/11882"
+    let error: string = ""
     const repo = myDataSource.getRepository(Weights);
-    const { batchNo } = JSON.parse(req.cookies.form);
-    req.body.batchNo = batchNo;
+
+    const validate = weightsValidation(req.body);
+    if (validate) return res.status(400).json({ error: validate.error });
+
+    req.body.batchNo = JSON.parse(req.cookies.form).batchNo;
 
     const weights = repo.create(req.body);
-    const result = await repo.save(weights).catch(e => {
-        return res.status(400).json({ error: "error" })
-    });
+    const result = await repo.save(weights).catch(e => error = "Couldn't save weights at database");
+    const form = await myDataSource.getRepository(Form).findBy({ batchNo: req.body.batchNo }).catch(e => error = "Couldn't find data from specified batch");
+    
+    if (error) return res.status(400).json({ error });
 
-    console.log(result);
+    const payload = weightsFormat(form, req.body);
 
-    res.status(200).json({ message: "Valores salvos no banco de dados!" });
+    const sodaResult = await mqttPublish(topic, payload).catch(e => e);
+
+    console.log(sodaResult);
+
+    res.status(200).json({ message: "Valores salvos no banco de dados!", sodaResult });
 }
 
+
+export async function calcCriteria(req: Request, res: Response) {
+    let error = "";
+    const validate = weightsValidation(req.body);
+    if (validate) return res.status(400).json({ error: validate.error });
+
+    req.body.batchNo = JSON.parse(req.cookies.form).batchNo;
+
+    const form = await myDataSource.getRepository(Form).findBy({ batchNo: req.body.batchNo }).catch(e => error = "Couldn't find data from specified batch");
+
+    if (error) return res.status(400).json({ error });
+
+    const criteria = criteriacalc(req.body, form);
+
+    return res.status(200).json(criteria);
+}
+
+
+
 export async function getAllWeights(req: Request, res: Response) {
-    const weights = await myDataSource.getRepository(Weights).find()
-                            .catch(e => res.status(400).json({ error: "Alguma coisa deu errado =(" }));
-    console.log(weights);
+    let err: string = "";
+
+    const weights = await myDataSource.getRepository(Weights).find().catch(e => err = "Alguma coisa deu errado =(");
+    
+    if (err) return res.status(400).json({ error: err })
 
     res.status(200).json(weights);
 }

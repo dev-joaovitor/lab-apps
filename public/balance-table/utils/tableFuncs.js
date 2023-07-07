@@ -4,7 +4,7 @@ export let column = 1,
            last = [1,1],
            node = false,
            toEdit = false;
-
+// TODO: change step to 100.....
 export const weights = { "p1": [], "p2": [], "p3": [], "p4": [] }
 
 
@@ -15,7 +15,7 @@ export function addWeight(value) {
     const cell = document.getElementById(`${column}-${row}`);
     
     if (cell.textContent && toEdit === false) {
-        if (cell.textContent === "~") return;
+        if (cell.textContent === "-") return;
         
         row++
         if (row === 21) {
@@ -28,7 +28,7 @@ export function addWeight(value) {
     
     toEdit = false;
     
-    if (value !== "~") weights[`p${column}`].splice(row - 1, 0, value);
+    if (value !== "-") weights[`p${column}`].splice(row - 1, 0, value);
 
     document.cookie = "weights=" + encodeURIComponent(JSON.stringify(weights));
     cell.textContent = value;
@@ -44,7 +44,7 @@ export function addWeight(value) {
     } else row++;
 
     if ((column === 2 || column === 4) && row >= 7) {
-        addWeight("~");
+        addWeight("-");
     }
 
     if (node) {
