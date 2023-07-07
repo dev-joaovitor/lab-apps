@@ -1,15 +1,26 @@
 import { storeWeights } from "./utils/tableApiCalls.js";
-import { addWeight, column, row, last, deleteWeight, weights } from "./utils/tableFuncs.js";
+import { addWeight, deleteWeight, weights } from "./utils/tableFuncs.js";
 
-const table = document.querySelector("table");
-const addBtn = document.querySelector("#add-weight")
-const sendWeights = document.querySelector("#send-weights");
+const table = document.querySelector("table"),
+      addBtn = document.querySelector("#add-weight"),
+      sendWeights = document.querySelector("#send-weights"),
+      tableInformation = document.querySelector("#table-information");
 
-const tableInformation = document.querySelector("#table-information");
+const cookies = {},
+      c = document.cookie.split(/[=;\s]/g).filter(e => e);
 
-const cookies = JSON.parse(decodeURIComponent(document.cookie.split("=")[1]));
-tableInformation.textContent = `Lote: ${cookies.batchNo} | Equip.: ${cookies.equipment}`;
+for (let i = 0; i < c.length; i+=2) {
+    cookies[c[i]] = JSON.parse(decodeURIComponent(c[i+1]));
+}
+tableInformation.textContent = `Lote: ${cookies.form.batchNo} | Equip.: ${cookies.form.equipment}`;
 
+if (cookies.weights) {
+    for (let key in cookies.weights) {
+        for (let value of cookies.weights[key]) {
+            if (value) addWeight(value);
+        }
+    }
+}
 
 const tableError = document.querySelector("#table-error");
 
@@ -32,5 +43,7 @@ sendWeights.addEventListener("click", async () => {
 
     console.log(res.message);
 
-    if (res.error) tableError.textContent = res.error;
+    if (res.error) return tableError.textContent = res.error;
+
+    document.cookie = "weights=; Max-age=-1";
 })

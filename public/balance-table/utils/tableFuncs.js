@@ -5,23 +5,18 @@ export let column = 1,
            node = false,
            toEdit = false;
 
-export const weights = {
-    1: [],
-    2: [],
-    3: [],
-    4: [],
-}
+export const weights = { "p1": [], "p2": [], "p3": [], "p4": [] }
 
 
 
 export function addWeight(value) {
     if (completedColumns.length === 4 && node === false) return;
-
+    
     const cell = document.getElementById(`${column}-${row}`);
-
+    
     if (cell.textContent && toEdit === false) {
         if (cell.textContent === "~") return;
-
+        
         row++
         if (row === 21) {
             row = 1;
@@ -30,11 +25,12 @@ export function addWeight(value) {
         document.querySelector(`.current-cell`)?.classList.remove("current-cell");
         return addWeight(value);
     }
-
+    
     toEdit = false;
+    
+    if (value !== "~") weights[`p${column}`].splice(row - 1, 0, value);
 
-    if (value !== "~") weights[column].splice(row - 1, 0, value);
-
+    document.cookie = "weights=" + encodeURIComponent(JSON.stringify(weights));
     cell.textContent = value;
     cell.classList.remove("current-cell");
 
@@ -78,7 +74,7 @@ export function deleteWeight(selectedNode) {
     
     toEdit = true;
 
-    weights[column].splice(row - 1, 1);
+    weights[`p${column}`].splice(row - 1, 1);
 
     document.querySelector(`.current-cell`)?.classList.remove("current-cell");
     node = selectedNode;

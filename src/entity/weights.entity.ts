@@ -1,21 +1,18 @@
-import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn, IntegerType } from "typeorm"
-
-//TODO: CHANGE COLUMN NAMES TO P*..
-
+import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from "typeorm"
 @Entity()
 export class Weights {
     @PrimaryColumn({ unique: true })
     batchNo: number;
 
     @Column("float", { array: true })
-    1: number[];
+    p1: number[];
 
     @Column("float", { array: true })
-    2: number[];
+    p2: number[];
 
     @Column("float", { array: true })
-    3: number[];
+    p3: number[];
 
     @Column("float", { array: true })
-    4: number[];
+    p4: number[];
 }
