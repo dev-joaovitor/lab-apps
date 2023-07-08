@@ -1,12 +1,12 @@
 import { calcCriteria, storeWeights } from "./utils/tableApiCalls.js";
-import { addWeight, deleteWeight, weights } from "./utils/tableFuncs.js";
+import { addWeight, deleteColumn, deleteWeight, weights } from "./utils/tableFuncs.js";
 
 const weightTable = document.querySelector("#weight-table"),
       addBtn = document.querySelector("#add-weight"),
       sendWeightsBtn = document.querySelector("#send-weights"),
       tableResult = document.querySelector("p#weight-table-result span"),
       calcCriteriaBtn = document.querySelector("#calc-criteria"),
-      tableInformation = document.querySelector("#table-information"),
+      tableInformation = document.querySelector("#table-information span"),
       criteriaIndividualVolume = document.querySelector("#criteria-individual-volume"),
       criteriaAverageVolume = document.querySelector("#criteria-average-volume");
 
@@ -30,6 +30,10 @@ if (cookies.weights) {
 weightTable.addEventListener("click", (e) => {
     if (e.target.nodeName === "TD" && !e.target.className) {
         deleteWeight(e.target);
+    }
+
+    if (e.target.nodeName === "TH" && !e.target.className) {
+        deleteColumn(e.target);
     }
 })
 
@@ -61,6 +65,8 @@ sendWeightsBtn.addEventListener("click", async () => {
 })
 
 calcCriteriaBtn.addEventListener("click", async () => {
+    tableResult.textContent = "";
+
     criteriaIndividualVolume.removeAttribute("class");
     criteriaIndividualVolume.textContent = "-";
 

@@ -8,7 +8,6 @@ export let column = 1,
 export const weights = { "p1": [], "p2": [], "p3": [], "p4": [] }
 
 
-
 export function addWeight(value) {
     if (completedColumns.length === 4 && node === false) return;
     
@@ -80,4 +79,23 @@ export function deleteWeight(selectedNode) {
     node = selectedNode;
     node.className = "current-cell";
     return;
+}
+
+export function deleteColumn(columnNode) {
+    if (toEdit) return;
+
+    document.querySelector(`.current-cell`)?.classList.remove("current-cell");
+
+    column = parseInt(columnNode.id.split("p").slice(1));
+    row = 1;
+
+    weights[columnNode.id] = [];
+
+    for (let i = 1; i < 21; i++) {
+        document.getElementById(`${column}-${i}`).textContent = "";
+    }
+
+    completedColumns.splice(completedColumns.indexOf(column), 1);
+
+    return document.getElementById(`${column}-${row}`).className = "current-cell";
 }

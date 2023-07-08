@@ -10,18 +10,22 @@
 </head>
 <body>
     <header>
-        <nav><a href="/balance-form">Formulário</a></nav>
+        <img src="../lab-scale-by-vectorsmarket15.png" alt="lab-scale-vector">
+        <nav>
+            <a class="nav-buttons" href="/">Página Inicial</a>
+            <a class="nav-buttons" href="/balance-form">Formulário</a>
+        </nav>
     </header>
     <main>
-        <p id="table-information"></p>
+        <p id="table-information"><span></span></p>
         <table id="weight-table">
             <thead>
                 <tr>
                     <th class="column-zero">Nº</th>
-                    <th>Amostra</th>
-                    <th>Amostra + Água</th>
-                    <th>Embalagem</th>
-                    <th>Embalagem + Água</th>
+                    <th id="p1">Amostra</th>
+                    <th id="p2">Amostra + Água</th>
+                    <th id="p3">Embalagem</th>
+                    <th id="p4">Embalagem + Água</th>
                 </tr>
             </thead>
             <tbody>
@@ -179,8 +183,10 @@
             </tbody>
         </table>
         <button type="button" id="add-weight">Add Weight</button>
-        <button type="button" id="calc-criteria">Calc Criteria</button>
-        <button type="button" id="send-weights">Send Weight</button>
+        <div id="buttons-container">
+            <button type="button" id="calc-criteria">Calcular INMETRO</button>
+            <button type="button" id="send-weights">Enviar ao MES</button>
+        </div>
     </main>
     <footer>
 

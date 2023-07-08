@@ -2,6 +2,24 @@
     font-family: sans-serif;
     font-weight: 600;
     box-sizing: border-box;
+    font-size: 14.5pt;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #336c7a;
+    height: 70px;
+}
+
+header img {
+    display: inline;
+    margin: 0 20px;
+    height: 80%;
 }
 
 main {
@@ -9,16 +27,22 @@ main {
     width: 100%;
 }
 
-
 table#criteria-table {
-    min-width: min(400px , 50%);
+    min-width: min(400px, 450px);
 }
 
 p { text-align: center }
 
-p#weight-table-result span {
-    background-color: blue;
+p#table-information span {
+    padding: 3px 10px;
+    border: 2px solid #535353;
 }
+
+p#weight-table-result span:not(:empty) {
+    padding: 5px;
+    border: 2px dotted #535353;
+}
+
 
 table {
     max-width: 500px;
@@ -38,6 +62,10 @@ th, td {
 td {
     padding: 3px;
     height: 25px;
+}
+
+tr:nth-child(odd):not(:last-child) {
+    background-color: #d8d8d8;
 }
 
 th {
@@ -66,7 +94,6 @@ button {
     margin: 0 auto;
 }
 
-
 .enum {
     background-color: #4e4e4e;
     color: #ffffff;
@@ -74,3 +101,27 @@ button {
 
 .criteria-ok { background-color: #62cb26; color: #ffffff; }
 .criteria-nok { background-color: #eb3636; color: #ffffff; }
+
+#buttons-container {
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    height: 46px;
+    margin: 13px auto;
+}
+
+button {
+    font-size: 12pt;
+    width: min(fit-content, 13vw);
+    background-color: #51b6cf;
+    color: #ffffff;
+    border: 3px solid #535353;
+    border-radius: 20px;
+    box-shadow: 3px 3px #000000;
+    transition: all 100ms;
+}
+
+button:active {
+    width: 12vw;
+    box-shadow: none;
+}

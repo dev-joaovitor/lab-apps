@@ -18,6 +18,20 @@
 
 body {
     background-color: #56a3cf;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #336c7a;
+    height: 70px;
+}
+
+header img {
+    display: inline;
+    margin: 0 20px;
+    height: 80%;
 }
 
 main {
