@@ -4,12 +4,13 @@ export let column = 1,
            last = [1,1],
            node = false,
            toEdit = false;
-// TODO: change step to 100.....
-export const weights = { "p1": [], "p2": [], "p3": [], "p4": [] }
 
+export const weights = { "p1": [], "p2": [], "p3": [], "p4": [] }
 
 export function addWeight(value) {
     if (completedColumns.length === 4 && node === false) return;
+
+    document.querySelector("p#weight-table-result span").textContent = "";
     
     const cell = document.getElementById(`${column}-${row}`);
     
@@ -98,4 +99,19 @@ export function deleteColumn(columnNode) {
     completedColumns.splice(completedColumns.indexOf(column), 1);
 
     return document.getElementById(`${column}-${row}`).className = "current-cell";
+}
+
+const cookies = {},
+      c = document.cookie.split(/[=;\s]/g).filter(e => e);
+
+for (let i = 0; i < c.length; i+=2) cookies[c[i]] = JSON.parse(decodeURIComponent(c[i+1]));
+
+document.querySelector("#table-information span").textContent = `Lote: ${cookies.form.batchNo} | Equip.: ${cookies.form.equipment}`;
+
+if (cookies.weights) {
+    for (let key in cookies.weights) {
+        for (let value of cookies.weights[key]) {
+            if (value) addWeight(value);
+        }
+    }
 }

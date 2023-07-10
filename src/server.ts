@@ -8,6 +8,14 @@ import * as BalanceControllers from "./controller/BalanceControllers";
 import * as BalanceMiddlewares from "./middleware/BalanceMiddlewares";
 
 import PageNotFound from "./middleware/four0four";
+import { Server } from "ws";
+
+const ws = new Server({ port: 9999 });
+
+ws.on("connection", (socket) => {
+    console.log("connected");
+})
+
 
 const app = express()
 

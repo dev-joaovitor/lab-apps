@@ -6,26 +6,8 @@ const weightTable = document.querySelector("#weight-table"),
       sendWeightsBtn = document.querySelector("#send-weights"),
       tableResult = document.querySelector("p#weight-table-result span"),
       calcCriteriaBtn = document.querySelector("#calc-criteria"),
-      tableInformation = document.querySelector("#table-information span"),
       criteriaIndividualVolume = document.querySelector("#criteria-individual-volume"),
       criteriaAverageVolume = document.querySelector("#criteria-average-volume");
-
-const cookies = {},
-      c = document.cookie.split(/[=;\s]/g).filter(e => e);
-
-for (let i = 0; i < c.length; i+=2) {
-    cookies[c[i]] = JSON.parse(decodeURIComponent(c[i+1]));
-}
-tableInformation.textContent = `Lote: ${cookies.form.batchNo} | Equip.: ${cookies.form.equipment}`;
-
-if (cookies.weights) {
-    for (let key in cookies.weights) {
-        for (let value of cookies.weights[key]) {
-            if (value) addWeight(value);
-        }
-    }
-}
-
 
 weightTable.addEventListener("click", (e) => {
     if (e.target.nodeName === "TD" && !e.target.className) {
@@ -36,6 +18,10 @@ weightTable.addEventListener("click", (e) => {
         deleteColumn(e.target);
     }
 })
+
+const ws = new WebSocket("ws://localhost:9999");
+
+ws.onopen = (e => console.log(e))
 
 // mock delete
 let count = 0;
@@ -86,4 +72,6 @@ calcCriteriaBtn.addEventListener("click", async () => {
 
     criteriaAverageVolume.textContent = CAV;
     criteriaAverageVolume.classList.add(`criteria-${CIV.toLowerCase()}`);
+
+    if (CIV === "OK" && CAV === "OK") sendWeightsBtn.disabled = false;
 })
