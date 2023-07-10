@@ -2,7 +2,6 @@ import { calcCriteria, storeWeights } from "./utils/tableApiCalls.js";
 import { addWeight, deleteColumn, deleteWeight, weights } from "./utils/tableFuncs.js";
 
 const weightTable = document.querySelector("#weight-table"),
-      addBtn = document.querySelector("#add-weight"),
       sendWeightsBtn = document.querySelector("#send-weights"),
       tableResult = document.querySelector("p#weight-table-result span"),
       calcCriteriaBtn = document.querySelector("#calc-criteria"),
@@ -19,17 +18,17 @@ weightTable.addEventListener("click", (e) => {
     }
 })
 
-const ws = new WebSocket("ws://localhost:9999");
+const ws = new WebSocket("ws://10.175.231.8:9999");
 
-ws.onopen = (e => console.log(e))
+ws.onopen = () => console.log("WebSocket connected");
+ws.onclose = () => console.log("WebSocket disconnected");
+ws.onerror = () => console.error("An error occurred trying to connect to WebSocket");
+ws.onmessage = (msg) => {
+    console.log(msg)
+    const value = parseFloat(msg.data);
 
-// mock delete
-let count = 0;
-addBtn.addEventListener("click", async () => {
-    count++;
-    addWeight(count);
-});
-
+    if (typeof value === "number") addWeight(value);
+}
 
 sendWeightsBtn.addEventListener("click", async () => {
     let msg = "Enviando";

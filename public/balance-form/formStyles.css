@@ -3,8 +3,6 @@
     --bordercolor-default: #273f47;
 }
 
-
-
 *, *::before, *::after {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 600;
@@ -32,6 +30,18 @@ header img {
     display: inline;
     margin: 0 20px;
     height: 80%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 250px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
 }
 
 main {

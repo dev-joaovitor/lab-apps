@@ -28,6 +28,12 @@ nav {
     justify-content: space-around;
     width: 250px;
 }
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
 main {
     min-width: 300px;
     width: 100%;
