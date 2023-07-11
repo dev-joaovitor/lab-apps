@@ -1,11 +1,15 @@
 import "reflect-metadata";
 import express from "express";
+import fileUpload from "express-fileupload";
 import cookieParser from "cookie-parser";
 
 import { myDataSource } from "./server-datasource";
 
 import * as BalanceControllers from "./controller/BalanceControllers";
 import * as BalanceMiddlewares from "./middleware/BalanceMiddlewares";
+
+import * as SkalarControllers from "./controller/SkalarControllers";
+import skalarValidation from "./middleware/skalarFileSizeLimiter";
 
 import PageNotFound from "./middleware/four0four";
 
@@ -25,6 +29,8 @@ myDataSource
 app.use(cookieParser());
 app.use(express.json());
 
+
+// balance routes
 app.get("/balance-table", BalanceMiddlewares.cookieCheck, express.static("public"));
 
 app.use(express.static("public"));
@@ -38,6 +44,16 @@ app.post("/api/store-weights", BalanceControllers.StoreWeights);
 app.post("/api/store-form", BalanceControllers.StoreForm);
 
 app.post("/api/calc-criteria", BalanceControllers.calcCriteria);
+
+
+// skalar routes
+app.post("/api/extract-skalar-data",
+    fileUpload(), 
+    skalarValidation,
+    SkalarControllers.ExtractSkalarData);
+
+app.post("/api/store-skalar-analysis", SkalarControllers.StoreSkalarAnalysis);
+
 
 // 404
 app.use(PageNotFound);

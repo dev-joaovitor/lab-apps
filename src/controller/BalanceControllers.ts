@@ -1,11 +1,11 @@
+import { Request, Response } from "express";
 import { Form } from "../entity/form.entity";
 import { Weights } from "../entity/weights.entity";
 import { productivePoints } from "../entity/productivePoints.entity";
-import { Request, Response } from "express";
-import { myDataSource } from "../server-datasource";
 import { individualTolerances } from "../entity/tolerance.entity";
-import formValidation from "../model/formValidation";
-import weightsValidation from "../model/weightsValidation";
+import { myDataSource } from "../server-datasource";
+import formValidation from "../middleware/formValidation";
+import weightsValidation from "../middleware/weightsValidation";
 import mqttPublish from "../mqtt/mqttPublish";
 import weightsFormat from "../utils/weightsFormat";
 import criteriacalc from "../utils/criteriaCalc";
