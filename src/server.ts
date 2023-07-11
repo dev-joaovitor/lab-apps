@@ -28,12 +28,14 @@ myDataSource
 
 app.use(cookieParser());
 app.use(express.json());
+app.get("/", (_, res) => res.redirect("/home-page"));
 
 
 // balance routes
 app.get("/balance-table", BalanceMiddlewares.cookieCheck, express.static("public"));
 
 app.use(express.static("public"));
+
 
 app.get("/api/get-weights", BalanceControllers.getAllWeights);
 
@@ -45,7 +47,6 @@ app.post("/api/store-form", BalanceControllers.StoreForm);
 
 app.post("/api/calc-criteria", BalanceControllers.calcCriteria);
 
-
 // skalar routes
 app.post("/api/extract-skalar-data",
     fileUpload(), 
@@ -53,7 +54,6 @@ app.post("/api/extract-skalar-data",
     SkalarControllers.ExtractSkalarData);
 
 app.post("/api/store-skalar-analysis", SkalarControllers.StoreSkalarAnalysis);
-
 
 // 404
 app.use(PageNotFound);

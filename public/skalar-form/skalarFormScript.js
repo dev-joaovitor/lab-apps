@@ -17,7 +17,11 @@ const extractData = async () => {
 
     const json = await res.json();
 
-    resultArea.textContent = json?.message;
+    for (let [key, value] of Object.entries(JSON.parse(json?.message))) {
+        const p = document.createElement("p");
+        p.textContent = `${key}: ${value}`;
+        resultArea.append(p);
+    }
 
     console.log(json);
 }
@@ -25,4 +29,4 @@ const extractData = async () => {
 skalarForm.addEventListener("submit", (e) => {
     e.preventDefault();
     extractData();
-})
+});
