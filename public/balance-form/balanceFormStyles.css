@@ -1,6 +1,6 @@
 :root {
     --error-red: #e92929;
-    --bordercolor-default: #273f47;
+    --bordercolor-default: #00688b;
 }
 
 *, *::before, *::after {
@@ -15,7 +15,7 @@
 }
 
 body {
-    background-color: #56a3cf;
+    background-color: #263b46;
     margin: 0;
 }
 
@@ -52,7 +52,7 @@ form {
     background-color: #e0e0e0;
     border: 5px solid var(--bordercolor-default);
     border-radius: 20px;
-    margin: 0 auto;
+    margin: 20px auto;
     max-width: 400px;
     padding: 20px 0;
 }

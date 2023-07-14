@@ -70,7 +70,9 @@ ws.on("connection", (stream) => {
     // stream.send((Math.random() * (400 - 100) + 100).toFixed(2));
     let i = 0;
     const mockInterval = setInterval(() => {
-        if (i === mockArray.length) return clearInterval(mockInterval);
+        if (i === mockArray.length) return (
+            stream.send((200 * Math.random()).toFixed(2))
+        );
         stream.send(mockArray[i]);
         i++;
     }, 200)

@@ -12,7 +12,7 @@ export function addWeight(value) {
 
     document.querySelector("p#weight-table-result span").textContent = "";
     
-    const cell = document.getElementById(`${column}-${row}`);
+    const cell = document.getElementById(`${column}-${row}`) ?? false;
     
     if (cell.textContent && toEdit === false) {
         if (cell.textContent === "-") return;

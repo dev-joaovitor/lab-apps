@@ -18,13 +18,12 @@ weightTable.addEventListener("click", (e) => {
     }
 })
 
-const ws = new WebSocket("ws://10.175.231.8:9999");
+const ws = new WebSocket("ws://localhost:9999");
 
 ws.onopen = () => console.log("WebSocket connected");
 ws.onclose = () => console.log("WebSocket disconnected");
 ws.onerror = () => console.error("An error occurred trying to connect to WebSocket");
 ws.onmessage = (msg) => {
-    console.log(msg)
     const value = parseFloat(msg.data);
 
     if (typeof value === "number") addWeight(value);

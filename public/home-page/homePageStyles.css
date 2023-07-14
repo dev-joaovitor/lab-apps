@@ -2,16 +2,11 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 600;
     box-sizing: border-box;
-    font-size: 14.5pt;
 }
 
-*:focus {
-    outline: none;
-}
+*:focus { outline: none; }
 
-body {
-    margin: 0;
-}
+body { margin: 0; }
 
 header {
     display: flex;
@@ -21,14 +16,35 @@ header {
     height: 70px;
 }
 
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+#homePageTitle {
+    padding: 0.5vw;
+    border: 2px solid #202a35;
+    background-color: #2f445c;
+    color: #ffff;
 }
 
-nav a {
-    padding: 2vw;
-    color: #ffffff;
+article {
+    width: min(650px, 100%);
+    border: 3px solid #202a35;
+    margin: 3vh auto;
+    padding: 20px;
+}
+
+h1, h2 { 
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+ul {
+    list-style-type: square;
+}
+
+ul a {
     text-decoration: none;
+    color: #342264;
+    /* font-size: 1.2rem; */
+}
+
+ul li { 
+    width: fit-content;
 }
