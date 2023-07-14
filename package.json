@@ -11,6 +11,7 @@
   "author": "joaotorvitor",
   "license": "MIT",
   "dependencies": {
+    "@types/xlsx": "^0.0.36",
     "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
@@ -19,7 +20,8 @@
     "pg": "^8.11.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17",
-    "ws": "^8.13.0"
+    "ws": "^8.13.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.3",

@@ -1,4 +1,4 @@
-const extractData = async () => {
+const extractDataSkalar = async () => {
     const resultArea = document.querySelector("#file-result");
     
     const file = document.querySelector("#skalar-file-inp").files;
@@ -31,4 +31,4 @@ const extractData = async () => {
     }
 }
 
-export default extractData;
+export default extractDataSkalar;

@@ -9,7 +9,10 @@ import * as BalanceControllers from "./controller/BalanceControllers";
 import * as BalanceMiddlewares from "./middleware/BalanceMiddlewares";
 
 import * as SkalarControllers from "./controller/SkalarControllers";
-import skalarValidation from "./middleware/skalarFileSizeLimiter";
+import skalarValidation from "./middleware/skalarValidation";
+
+import * as AlcolyzerControllers from "./controller/AlcolyzerControllers";
+import alcolyzerValidation from "./middleware/alcolyzerValidation";
 
 import PageNotFound from "./middleware/four0four";
 
@@ -51,9 +54,16 @@ app.post("/api/calc-criteria", BalanceControllers.calcCriteria);
 app.post("/api/extract-skalar-data",
     fileUpload(), 
     skalarValidation,
-    SkalarControllers.ExtractSkalarData);
+    SkalarControllers.extractSkalarData);
+    
+app.post("/api/store-skalar-analysis", SkalarControllers.storeSkalarAnalysis);
 
-app.post("/api/store-skalar-analysis", SkalarControllers.StoreSkalarAnalysis);
+// alcolyzer routes
+app.post("/api/extract-alcolyzer-data",
+    fileUpload(),
+    alcolyzerValidation,
+    AlcolyzerControllers.extractAlcolyzerData);
+
 
 // 404
 app.use(PageNotFound);

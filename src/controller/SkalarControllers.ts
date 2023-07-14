@@ -2,12 +2,12 @@ import { Request, Response } from "express";
 import pdf from "pdf-parse";
 
 
-export async function StoreSkalarAnalysis(req: Request, res: Response) {
+export async function storeSkalarAnalysis(req: Request, res: Response) {
 
     return;
 };
 
-export async function ExtractSkalarData(req: Request, res: Response) {
+export async function extractSkalarData(req: Request, res: Response) {
     const file = req.files[Object.keys(req.files)[0]];
 
     const resultData = {};

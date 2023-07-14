@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="alcolyzerFormStyles.css">
+    <script type="module" src="alcolyzerFormScript.js" defer></script>
+    <title>Formulário Alcolyzer</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Página Inicial</a>
+        </nav>
+    </header>
+    <main>
+        <form id="upload-alcolyzer-form">
+            <label>
+                Insira seus arquivos (XLSX) testes do Alcolyzer:
+                <input type="file" id="alcolyzer-file-inp">
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="file-result"></div>
+    </main>
+    <footer></footer>
+</body>
+</html>
