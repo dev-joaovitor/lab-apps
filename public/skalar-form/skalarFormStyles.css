@@ -61,12 +61,14 @@ button {
   text-overflow:ellipsis;
 }
 
-#file-result {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+table {
+    margin: 0 auto 10px;
+    border: 1px solid;
+    border-collapse: collapse;
 }
 
-#file-result p {
-    margin: 5px;
+tr, th, td {
+    padding: 10px;
+    border: 1px solid;
 }
