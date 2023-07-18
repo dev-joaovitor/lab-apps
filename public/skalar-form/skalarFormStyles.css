@@ -72,3 +72,8 @@ tr, th, td {
     padding: 10px;
     border: 1px solid;
 }
+
+#preview-pdf iframe {
+    width: 100vw;
+    height: 100vh;
+}
