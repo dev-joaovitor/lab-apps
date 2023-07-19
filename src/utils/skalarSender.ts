@@ -10,7 +10,7 @@ export const skalarSender = async (skalarData: SkalarData[]) => {
             skalarType, skalarEquipment,
             skalarBatchNo, skalarValue
         } = skalarObj;
-        
+
         const steps = {
             ODCOMP: 100,
             ODFIM: 200,
@@ -28,6 +28,5 @@ export const skalarSender = async (skalarData: SkalarData[]) => {
         const mqttRes = await mqttPublish(topic, payload);
         console.log(mqttRes);
     }
-
     return "Ok";
 };

@@ -37,6 +37,7 @@ nav a {
 main {
     min-width: 300px;
     width: 100%;
+    margin: auto auto 15vh auto;
 }
 
 table#criteria-table {
@@ -139,4 +140,14 @@ button:active:is(:enabled) {
 
 #send-weights:disabled {
     background-color: #929292;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #134957;
+    color: white;
+    text-align: center;
 }

@@ -63,9 +63,7 @@ export async function extractSkalarData(req: Request, res: Response) {
 
       const skalarData: SkalarData[] = skalarFormat(sample);
 
-      const resusu = await skalarSender(skalarData);
-
-      console.log(resusu);
+      await skalarSender(skalarData);
 
     pdf(file).then((res: any) => {
         // // raw parsed text from pdf
@@ -79,6 +77,6 @@ export async function extractSkalarData(req: Request, res: Response) {
         // console.log("\n\n")
     
     }).finally(() => {
-        return res.status(200).json({ status: "success", message: "Dados coletados com sucesso!" });
+        return res.status(200).json({ status: "success", message: "Dados enviados para o Athena MES!" });
     })
 };
