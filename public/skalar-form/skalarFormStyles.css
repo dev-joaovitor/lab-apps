@@ -68,13 +68,13 @@ button {
     color: #ffffff;
 }
 
-#preview-pdf {
+#skalar-result {
     display: flex;
     justify-content: center;
     margin: 0 auto;
 }
 
-#preview-pdf object {
+#skalar-result object {
     border: 3px solid #336c7a;
     width: 70vw;
     height: 70vh;
