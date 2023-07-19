@@ -1,15 +1,15 @@
-export interface skalarData {
+export interface SkalarData {
     skalarType: string;
     skalarEquipment: string;
     skalarBatchNo: number;
     skalarValue: number;
 }
 
-export function skalarPatternValidation(strArr: string[]): skalarData[] {
+export function skalarFormat(strArr: string[]): SkalarData[] {
     const patternRegex: RegExp = new RegExp(/-(\w+-){2}\d+-/gmi);
 
     // all string to uppercase
-    const result: skalarData[] = strArr.map((str: string) => str.toUpperCase())
+    const result: SkalarData[] = strArr.map((str: string) => str.toUpperCase())
 
     // filter the pattern format
     .filter((str: string) => str.match(patternRegex))
@@ -19,7 +19,7 @@ export function skalarPatternValidation(strArr: string[]): skalarData[] {
         let splitted: any = str.split("-");
             splitted = splitted.slice(1);
         
-        const data: skalarData = {
+        const data: SkalarData = {
             skalarType: splitted[0],
             skalarEquipment: splitted[1],
             skalarBatchNo: parseInt(splitted[2]),
