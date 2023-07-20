@@ -33,7 +33,7 @@ export async function extractSkalarData(req: Request, res: Response) {
         '114A9Ubwc242,64',       
         '115A10Ubwc345,80',
 
-        '116A11U-ODCOMP-OD02-1-145,24',     
+        '116A11U-OdCoMP-OD02-1-145,24',     
         '117A12U-odfim-od07-3-161,22',
         '118A13U-odfim-od02-2-223,95',
         
@@ -64,6 +64,7 @@ export async function extractSkalarData(req: Request, res: Response) {
       const skalarData: SkalarData[] = skalarFormat(sample);
 
       await skalarSender(skalarData);
+      console.log("Data sent!");
 
     pdf(file).then((res: any) => {
         // // raw parsed text from pdf
