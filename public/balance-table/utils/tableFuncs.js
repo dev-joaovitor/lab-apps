@@ -106,7 +106,7 @@ const cookies = {},
 
 for (let i = 0; i < c.length; i+=2) cookies[c[i]] = JSON.parse(decodeURIComponent(c[i+1]));
 
-document.querySelector("#table-information span").textContent = `Lote: ${cookies.form.batchNo} | Equip.: ${cookies.form.equipment}`;
+document.querySelector("#table-information span").textContent = `Lote: ${cookies.form.batchNo} | Equip.: ${cookies.form.equipment} | Vol.: ${cookies.form.nominalVolume}ml`;
 
 if (cookies.weights) {
     for (let key in cookies.weights) {

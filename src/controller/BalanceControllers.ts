@@ -49,7 +49,7 @@ export async function StoreWeights(req: Request, res: Response) {
     req.body.batchNo = JSON.parse(req.cookies.form).batchNo;
 
     const weights = repo.create(req.body);
-    const result = await repo.save(weights).catch(e => error = "Couldn't save weights at database");
+    await repo.save(weights).catch(e => error = "Couldn't save weights at database");
     const form = await myDataSource.getRepository(Form).findBy({ batchNo: req.body.batchNo }).catch(e => error = "Couldn't find data from specified batch");
     
     if (error) return res.status(400).json({ error });

@@ -14,7 +14,7 @@ export default async function mqttPublish(topic: string, data: object) {
             clearInterval(resetInterval);
             mqttClient.publish(topic, JSON.stringify(data), (err) => {
                 console.log("Data collected, wait 20 seconds until send another...")
-                setTimeout(() => { err ? rej(err) : res(`Resolved!`) }, 1000*15);
+                setTimeout(() => { err ? rej(err) : res(`Valores coletados com sucesso!`) }, 1000*15);
             });
         }, 1000*20);
     })

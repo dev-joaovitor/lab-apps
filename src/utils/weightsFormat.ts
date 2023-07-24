@@ -1,6 +1,6 @@
 export default function weightsFormat(form: any, weights: object) {
     form = form[0];
-    const payload = { "step": 101 };
+    const payload = { step: 100 };
 
     for (let key in form) payload[key] = form[key];
 
