@@ -93,6 +93,7 @@ button#btn-save-data {
     color: #ffffff;
     border: 3px solid var(--bordercolor-default);
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .error-msg {
