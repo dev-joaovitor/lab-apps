@@ -8,7 +8,7 @@ alcolyzerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-
+    
     formData.append("xlsFile", alcolyzerInpFile.files[0]);
 
     const resultP = document.querySelectorAll("#file-result p");
@@ -18,8 +18,9 @@ alcolyzerForm.addEventListener("submit", async (e) => {
             node.parentNode.removeChild(node);
         }
     }
-
     const result = await extractDataAlcolyzer(formData);
 
-    resultArea.append(...result);
+    if (result.length) return resultArea.append(...result);
+
+    return resultArea.append(result);
 })

@@ -11,16 +11,33 @@
 <body>
     <header>
         <nav>
-            <a href="/">Página Inicial</a>
+            <a accesskey="enter" href="/">Página Inicial</a>
         </nav>
     </header>
     <main>
         <form id="upload-alcolyzer-form">
             <label>
-                Insira seus arquivos (XLSX) testes do Alcolyzer:
-                <input type="file" id="alcolyzer-file-inp">
+                Selecione a área funcional
+                <select name="" id="" required>
+                    <option value="" selected disabled>Selecione a área</option>
+                    <option value="133">Adega de Fermentação</option>
+                    <option value="142">Adega de Pressão</option>
+                    <option value="121">Produto Acabado</option>
+                    <option value="">Linhas Lata</option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
             </label>
-            <button type="submit">Submit</button>
+            <label>
+                Insira o número do lote
+                <input type="number" required>
+            </label>
+            <label>
+                Insira o arquivo do teste (XLS):
+                <input type="file" id="alcolyzer-file-inp" required>
+            </label>
+            <button type="submit">Enviar</button>
         </form>
         <div id="file-result"></div>
     </main>
