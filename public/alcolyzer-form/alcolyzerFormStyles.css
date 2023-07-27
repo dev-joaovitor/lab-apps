@@ -68,6 +68,11 @@ button {
     color: #ffffff;
 }
 
+button:disabled {
+    background-color: #707070;
+    border-color: #707070;
+}
+
 #file-result {
     display: flex;
     flex-direction: column;

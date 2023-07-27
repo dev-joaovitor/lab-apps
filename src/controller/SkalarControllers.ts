@@ -33,17 +33,17 @@ export async function extractSkalarData(req: Request, res: Response) {
         '114A9Ubwc242,64',       
         '115A10Ubwc345,80',
 
-        '116A11U-OdCoMP-OD02-1-145,24',     
-        '117A12U-odfim-od07-3-161,22',
-        '118A13U-odfim-od02-2-223,95',
+        '116A11U-OdCoMP-OD2-1-145,24',     
+        '117A12U-odfim-od7-3-161,22',
+        '118A13U-odfim-od2-2-223,95',
         
         '119A14DDrift314,84',
         '120WTWWash6,57',     
         
-        '121A15U-ODCOMP-OD02-2-143,09',
+        '121A15U-ODCOMP-OD2-2-143,09',
         // '122A16U-pA-eCh1541-1000-59,99',      
         '129A21U-bra-bRA2-77-934,86',
-        '118A13U-odfim-od02-1-444,95',
+        '118A13U-odfim-od2-1-444,95',
         '130A22U-pA-eCh1541-2-181,27', 
         '123A17U-bra-bRa1-23-170,26',
         
@@ -51,7 +51,7 @@ export async function extractSkalarData(req: Request, res: Response) {
         '126A20WWash6,57',     
         
         // '127A19U-pA-eCh1502-1700-308,80',
-        '128A20U-ODCOMP-OD07-3-64,50',      
+        '128A20U-ODCOMP-OD7-3-64,50',      
         '124A18U-pA-eCh1503-1-156,38',    
         '129A21U-bra-bRA2-45-999,86',
         '129A21U-bra-bRA1-11-223,86',
@@ -63,7 +63,7 @@ export async function extractSkalarData(req: Request, res: Response) {
 
       const skalarData: SkalarData[] = skalarFormat(sample);
 
-      await skalarSender(skalarData);
+    //   await skalarSender(skalarData);
       console.log("Data sent!");
 
     pdf(file).then((res: any) => {

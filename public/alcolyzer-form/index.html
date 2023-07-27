@@ -18,15 +18,20 @@
         <form id="upload-alcolyzer-form">
             <label>
                 Selecione a área funcional
-                <select name="" id="" required>
-                    <option value="" selected disabled>Selecione a área</option>
+                <select id="select-functional-area" required>
+                    <option value="" selected disabled>Selecione uma área</option>
                     <option value="133">Adega de Fermentação</option>
                     <option value="142">Adega de Pressão</option>
                     <option value="121">Produto Acabado</option>
-                    <option value="">Linhas Lata</option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                    <option value="34">Latas</option>
+                    <option value="71">Longneck</option>
+                    <option value="12">Retornável</option>
+                </select>
+            </label>
+            <label>
+                Selecione o equipamento
+                <select id="select-equipment" required>
+                    <option value="" selected disabled>Aguardando área...</option>
                 </select>
             </label>
             <label>
@@ -37,7 +42,7 @@
                 Insira o arquivo do teste (XLS):
                 <input type="file" id="alcolyzer-file-inp" required>
             </label>
-            <button type="submit">Enviar</button>
+            <button type="submit" disabled>Enviar</button>
         </form>
         <div id="file-result"></div>
     </main>

@@ -18,14 +18,25 @@ export function skalarFormat(strArr: string[]): SkalarData[] {
     .map((str: string) => {
         let splitted: any = str.split("-");
             splitted = splitted.slice(1);
-        
+
         const data: SkalarData = {
             skalarType: splitted[0],
             skalarEquipment: splitted[1],
             skalarBatchNo: parseInt(splitted[2]),
             skalarValue: parseFloat(splitted[3].replace(",",".")),
         }
+
+        if (data.skalarType.includes("OD")){
+            const odNum = parseInt(data.skalarEquipment.slice(2));
+
+            if (odNum < 10){
+                data.skalarEquipment = `OD0${odNum}`
+            }
+        }
+
         return data;
     });
+    console.log(result)
+
     return result;
 }
