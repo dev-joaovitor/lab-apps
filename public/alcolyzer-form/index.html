@@ -20,29 +20,34 @@
                 Selecione a área funcional
                 <select id="select-functional-area" required>
                     <option value="" selected disabled>Selecione uma área</option>
-                    <option value="133">Adega de Fermentação</option>
-                    <option value="142">Adega de Pressão</option>
+                    <option value="1331">Adega Fermentação - Normal</option>
+                    <option value="1332">Adega Fermentação - Periódico </option>
+                    <option value="142">Adega Pressão</option>
                     <option value="121">Produto Acabado</option>
                     <option value="34">Latas</option>
                     <option value="71">Longneck</option>
                     <option value="12">Retornável</option>
                 </select>
             </label>
+            <hr>
             <label>
                 Selecione o equipamento
                 <select id="select-equipment" required>
                     <option value="" selected disabled>Aguardando área...</option>
                 </select>
             </label>
+            <hr>
             <label>
                 Insira o número do lote
-                <input type="number" required>
+                <input type="number" id="batchno-inp" required>
             </label>
+            <hr>
             <label>
                 Insira o arquivo do teste (XLS):
-                <input type="file" id="alcolyzer-file-inp" required>
+                <input type="file" id="alcolyzer-file-inp" accept=".xls,.xlsx" required>
             </label>
-            <button type="submit" disabled>Enviar</button>
+            <hr>
+            <button type="submit" id="send-btn" disabled>Enviar</button>
         </form>
         <div id="file-result"></div>
     </main>

@@ -55,6 +55,7 @@ export async function extractSkalarData(req: Request, res: Response) {
         '124A18U-pA-eCh1503-1-156,38',    
         '129A21U-bra-bRA2-45-999,86',
         '129A21U-bra-bRA1-11-223,86',
+        'TESTE-bra-bRA1-11-odcomp-od32-23-223,86',
 
         '131A23DDrift183,85',
         '132WTWWash6,57',        
@@ -62,6 +63,7 @@ export async function extractSkalarData(req: Request, res: Response) {
       ]
 
       const skalarData: SkalarData[] = skalarFormat(sample);
+      console.log(skalarData)
 
     //   await skalarSender(skalarData);
       console.log("Data sent!");

@@ -9,13 +9,18 @@ export function skalarFormat(strArr: string[]): SkalarData[] {
     const patternRegex: RegExp = new RegExp(/-(\w+-){2}\d+-/gmi);
 
     // all string to uppercase
-    const result: SkalarData[] = strArr.map((str: string) => str.toUpperCase())
+    const result: SkalarData[] = strArr.map((str: string) => {
+        // const regExp: RegExp = new RegExp(/-(\w+-){2}\d+-/gmi);
+        // console.log(str)
+        return str.toUpperCase()
+    })
 
     // filter the pattern format
     .filter((str: string) => str.match(patternRegex))
 
     // split the filtered strings by => " - " and transform the values into an object
     .map((str: string) => {
+        console.log(str)
         let splitted: any = str.split("-");
             splitted = splitted.slice(1);
 
@@ -23,7 +28,7 @@ export function skalarFormat(strArr: string[]): SkalarData[] {
             skalarType: splitted[0],
             skalarEquipment: splitted[1],
             skalarBatchNo: parseInt(splitted[2]),
-            skalarValue: parseFloat(splitted[3].replace(",",".")),
+            skalarValue: parseFloat(splitted[splitted.length-1].replace(",",".")),
         }
 
         if (data.skalarType.includes("OD")){
@@ -36,7 +41,5 @@ export function skalarFormat(strArr: string[]): SkalarData[] {
 
         return data;
     });
-    console.log(result)
-
     return result;
 }
