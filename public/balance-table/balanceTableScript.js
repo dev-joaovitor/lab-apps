@@ -19,7 +19,7 @@ weightTable.addEventListener("click", (e) => {
     }
 })
 
-const ws = new WebSocket("ws://10.175.160.110:6969");
+const ws = new WebSocket("ws://localhost:6969");
 
 ws.onopen = () => console.log("WebSocket connected");
 ws.onclose = () => console.log("WebSocket disconnected");
